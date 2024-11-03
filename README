@@ -1,1 +1,88 @@
-Make sure you redirect url configured in the dasboard app of spotify to same as localhost redirect (for e.g - http://localhost:8888/redirect)
+
+# Spotify Discover Weekly Playlist Saver
+
+This is a simple Node.js application that allows users to save songs from their "Discover Weekly" playlist on Spotify to a custom "Saved Weekly" playlist. The app uses the Spotify Web API for authentication and playlist management.
+
+## Features
+
+- Authenticate with Spotify
+- Access the user's "Discover Weekly" playlist
+- Save tracks from "Discover Weekly" to a new or existing "Saved Weekly" playlist
+
+## Prerequisites
+
+- Node.js installed on your machine
+- A Spotify Developer account and an application set up on the [Spotify Developer Dashboard](https://developer.spotify.com/dashboard/)
+
+## Getting Started
+
+1. **Clone the repository:**
+
+   ```bash
+   git clone https://github.com/dantecodex/spotify-discover-weekly-saver.git
+   cd spotify-discover-weekly-saver
+   ```
+
+2. **Install dependencies:**
+
+   ```bash
+   npm install
+   ```
+
+3. **Set up environment variables:**
+
+   Create a `.env` file in the root of the project and add your Spotify app credentials:
+
+   ```plaintext
+   CLIENTID=your_spotify_client_id
+   CLIENTSECRET=your_spotify_client_secret
+   SECRET=your_session_secret
+   ```
+
+   - `CLIENTID`: Your Spotify application client ID
+   - `CLIENTSECRET`: Your Spotify application client secret
+   - `SECRET`: A secret key for session management (can be any string)
+
+4. **Set up the Redirect URI in Spotify Dashboard:**
+
+   - Go to the [Spotify Developer Dashboard](https://developer.spotify.com/dashboard/).
+   - Select your application.
+   - In the application settings, find the "Redirect URIs" section.
+   - Add the following URI:
+
+     ```
+     http://localhost:8888/redirect
+     ```
+
+   - Make sure to save your changes.
+
+5. **Run the application:**
+
+   ```bash
+   node index.js
+   ```
+
+   The server will start on [http://localhost:8888](http://localhost:8888).
+
+6. **Authenticate with Spotify:**
+
+   Open your browser and navigate to [http://localhost:8888](http://localhost:8888). You will be redirected to Spotify for authentication. After logging in, you will be redirected back to the application.
+
+## Usage
+
+Once authenticated, the application will retrieve your "Discover Weekly" playlist and save its tracks to a "Saved Weekly" playlist. If the "Saved Weekly" playlist does not exist, it will be created.
+
+## Dependencies
+
+- `express`: Fast, unopinionated, minimalist web framework for Node.js
+- `express-session`: Simple session middleware for Express
+- `spotify-web-api-node`: A Node.js wrapper for the Spotify Web API
+- `dotenv`: Module to load environment variables from a `.env` file
+
+## Contributing
+
+If you'd like to contribute, please fork the repository and submit a pull request with your changes.
+
+```
+
+Feel free to customize any part of the README to better fit your project's specifics or your personal style!
